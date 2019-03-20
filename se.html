@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="EmployeeMod">
+<head>
+<title>How to bind data to Select Control using ng-options?</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script type="text/javascript">
+/*Declaring the Module*/
+var EmployeeMod = angular.module('EmployeeMod', []);
+EmployeeMod.controller('EmployeeCtrl', function ($scope) {
+/*Declaring JSON formatted Data*/
+$scope.empDetails = [
+{name:'Rupak Roy', designation:'Assistant Manager'},
+{name:'Sujata Malhotra', designation:'Project Manager', notAnOption: true},
+{name:'Raghav Setthy', designation:'Team Leader'},
+{name:'Mohini Sharma', designation:'Graphics Designer', notAnOption: true},
+{name:'Sanjarekha Dash', designation:'Software Engineer', notAnOption: false}
+];
+});
+</script>
+</head>
+<body ng-controller="EmployeeCtrl">
+<!--Binding Data using ng-options-->
+<select ng-model="empName" ng-options="emp.name for emp in empDetails"></select>
+</body>
+</html>

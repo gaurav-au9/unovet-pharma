@@ -1,0 +1,38 @@
+<html ng-app="CustomersMod">
+<head>
+<title>Example of using conditional filter with ng-repeat?</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script type="text/javascript">
+var CustomersMod = angular.module('CustomersMod', []);
+CustomersMod.controller('CustomersCon', function ($scope) {
+$scope.Customers = [
+{'Name': 'Airtel', 'Status': 'Active'},
+{'Name': 'Vodafone', 'Status': 'inActive'},
+{'Name': 'Aircel', 'Status': 'Active'},
+{'Name': 'Microsoft Corporation', 'Status': 'Active'},
+{'Name': 'Covansys', 'Status': 'inActive'},
+{'Name': 'Infosys', 'Status': 'Active'},
+{'Name': 'Intel', 'Status': 'Active'},
+{'Name': 'Capgemini', 'Status': 'inActive'},
+{'Name': 'Dell', 'Status': 'Active'},
+{'Name': 'Intex', 'Status': 'Active'},
+{'Name': 'Samsung', 'Status': 'inActive'},
+{'Name': 'Nokia', 'Status': 'inActive'},
+{'Name': 'Motorola', 'Status': 'Active'}
+];
+});
+</script>
+</head>
+<body ng-controller="CustomersCon">
+List of Customers
+<hr />
+<b>Active...</b>
+<ul>
+<li ng-repeat="Customer in Customers" ng-show="Customer.Status=='Active'">{{Customer.Name}}</li>
+</ul>
+<b>inActive...</b>
+<ul>
+<li ng-repeat="Customer in Customers" ng-hide="Customer.Status=='Active'">{{Customer.Name}}</li>
+</ul>
+</body>
+</html>

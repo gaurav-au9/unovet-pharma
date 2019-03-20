@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="CusFilterMod">
+<head>
+<title>How to restrict AngularJS Search Filter to a specific column?</title>
+<style type="text/css">
+th { background: #000000; color: #ffffff; border: 1px solid grey; border-collapse: collapse; }
+table, td  { border: 1px solid grey; border-collapse: collapse; padding: 5px; }
+table tr:nth-child(odd)    { background-color: #f1f1f1; }
+table tr:nth-child(even) { background-color: #ffffff; }
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script type="text/javascript">
+var CusFilterMod = angular.module('CusFilterMod', [])
+.controller('CusFilterCtrl', ['$scope', '$filter', function($scope, $filter) {
+var employees = [{
+name: 'Rishika Malviya',
+dob: new Date("January 20, 1985"),
+designation: 'Project Manager',
+gender: 'Female',
+salary: 25000
+}, {
+name: 'Niraja Nayak',
+dob: new Date("February 25, 1995"),
+designation: 'Manager',
+gender: 'Male',
+salary: 45000
+}, {
+name: 'Biswabhusan Panda',
+dob: new Date("December 12, 1970"),
+designation: 'Team Leader',
+gender: 'Male',
+salary: 25500
+}, {
+name: 'Ravi Sakalkar',
+dob: new Date("October 1, 1985"),
+designation: 'Business Head',
+gender: 'Female',
+salary: 55000
+},
+{
+name: 'Punam Nikam',
+dob: new Date("November 10, 1955"),
+designation: 'Graphics Designer',
+gender: 'Male',
+salary: 75000
+}
+];
+$scope.employees = employees;
+}]);
+</script>
+</head>
+<body>
+<div ng-controller="CusFilterCtrl">
+Search <input type="text" ng-model="search" placeholder="Search Employees">
+<br />
+<br />
+<table>
+<thead>
+<th>Name</th>
+<th>Date</th>
+<th>Designation</th>
+<th>Gender</th>
+<th>Salary</th>
+</thead>
+<tbody>
+<tr ng-repeat="employee in employees | filter:{name:search}">
+<td>{{ employee.name | uppercase }}</td>
+<td>{{ employee.dob | date:"MMM dd, yyyy" }}</td>
+<td>{{ employee.designation }}</td>
+<td>{{ employee.gender }}</td>
+<td>{{ employee.salary | currency:"$":2 }}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
